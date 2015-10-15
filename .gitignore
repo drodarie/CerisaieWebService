@@ -1,5 +1,8 @@
 # IntelliJ
 /.idea
+/cerisaie.webservice.iml
+/classes
+/target
 /CerisaieWebService.iml
 
 # Eclipse

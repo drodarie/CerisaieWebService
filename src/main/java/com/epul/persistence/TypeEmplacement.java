@@ -1,4 +1,4 @@
-package persistence;
+package com.epul.persistence;
 
 import javax.persistence.*;
 

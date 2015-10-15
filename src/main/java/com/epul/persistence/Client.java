@@ -1,4 +1,4 @@
-package persistence;
+package com.epul.persistence;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Client {
-    private int numCli;
+    private Integer numCli;
     private String nomCli;
     private String adrRueCli;
     private String cpCli;
@@ -22,11 +22,11 @@ public class Client {
 
     @Id
     @Column(name = "NumCli")
-    public int getNumCli() {
+    public Integer getNumCli() {
         return numCli;
     }
 
-    public void setNumCli(int numCli) {
+    public void setNumCli(Integer numCli) {
         this.numCli = numCli;
     }
 
