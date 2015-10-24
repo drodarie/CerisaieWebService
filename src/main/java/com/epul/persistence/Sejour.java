@@ -4,19 +4,17 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
- * Created by Dimitri on 02/10/2015.
- *
- * @version 1.0
+ * Created by Toromis on 24/10/2015.
  */
 @Entity
 public class Sejour {
     private int numSej;
-    private Date dateDebSej;
-    private Date dateFinSej;
-    private Integer nbPersonnes;
+    private Timestamp datedebSej;
+    private Timestamp dateFinSej;
+    private int nbPersonnes;
 
     @Id
     @Column(name = "NumSej")
@@ -29,32 +27,32 @@ public class Sejour {
     }
 
     @Basic
-    @Column(name = "DateDebSej")
-    public Date getDateDebSej() {
-        return dateDebSej;
+    @Column(name = "DatedebSej")
+    public Timestamp getDatedebSej() {
+        return datedebSej;
     }
 
-    public void setDateDebSej(Date dateDebSej) {
-        this.dateDebSej = dateDebSej;
+    public void setDatedebSej(Timestamp datedebSej) {
+        this.datedebSej = datedebSej;
     }
 
     @Basic
     @Column(name = "DateFinSej")
-    public Date getDateFinSej() {
+    public Timestamp getDateFinSej() {
         return dateFinSej;
     }
 
-    public void setDateFinSej(Date dateFinSej) {
+    public void setDateFinSej(Timestamp dateFinSej) {
         this.dateFinSej = dateFinSej;
     }
 
     @Basic
     @Column(name = "NbPersonnes")
-    public Integer getNbPersonnes() {
+    public int getNbPersonnes() {
         return nbPersonnes;
     }
 
-    public void setNbPersonnes(Integer nbPersonnes) {
+    public void setNbPersonnes(int nbPersonnes) {
         this.nbPersonnes = nbPersonnes;
     }
 
@@ -66,9 +64,9 @@ public class Sejour {
         Sejour sejour = (Sejour) o;
 
         if (numSej != sejour.numSej) return false;
-        if (dateDebSej != null ? !dateDebSej.equals(sejour.dateDebSej) : sejour.dateDebSej != null) return false;
+        if (nbPersonnes != sejour.nbPersonnes) return false;
+        if (datedebSej != null ? !datedebSej.equals(sejour.datedebSej) : sejour.datedebSej != null) return false;
         if (dateFinSej != null ? !dateFinSej.equals(sejour.dateFinSej) : sejour.dateFinSej != null) return false;
-        if (nbPersonnes != null ? !nbPersonnes.equals(sejour.nbPersonnes) : sejour.nbPersonnes != null) return false;
 
         return true;
     }
@@ -76,9 +74,9 @@ public class Sejour {
     @Override
     public int hashCode() {
         int result = numSej;
-        result = 31 * result + (dateDebSej != null ? dateDebSej.hashCode() : 0);
+        result = 31 * result + (datedebSej != null ? datedebSej.hashCode() : 0);
         result = 31 * result + (dateFinSej != null ? dateFinSej.hashCode() : 0);
-        result = 31 * result + (nbPersonnes != null ? nbPersonnes.hashCode() : 0);
+        result = 31 * result + nbPersonnes;
         return result;
     }
 }

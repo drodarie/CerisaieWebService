@@ -1,21 +1,20 @@
 package com.epul.persistence;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Toromis on 24/10/2015.
  */
-@Entity
-@IdClass(ActivitePK.class)
-public class Activite {
+public class ActivitePK implements Serializable {
     private int codeSport;
     private Timestamp dateJour;
     private int numSej;
-    private int nbloc;
 
-    @Id
     @Column(name = "CodeSport")
+    @Id
     public int getCodeSport() {
         return codeSport;
     }
@@ -24,8 +23,8 @@ public class Activite {
         this.codeSport = codeSport;
     }
 
-    @Id
     @Column(name = "DateJour")
+    @Id
     public Timestamp getDateJour() {
         return dateJour;
     }
@@ -34,8 +33,8 @@ public class Activite {
         this.dateJour = dateJour;
     }
 
-    @Id
     @Column(name = "NumSej")
+    @Id
     public int getNumSej() {
         return numSej;
     }
@@ -44,27 +43,16 @@ public class Activite {
         this.numSej = numSej;
     }
 
-    @Basic
-    @Column(name = "NBLOC")
-    public int getNbloc() {
-        return nbloc;
-    }
-
-    public void setNbloc(int nbloc) {
-        this.nbloc = nbloc;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Activite activite = (Activite) o;
+        ActivitePK that = (ActivitePK) o;
 
-        if (codeSport != activite.codeSport) return false;
-        if (numSej != activite.numSej) return false;
-        if (nbloc != activite.nbloc) return false;
-        if (dateJour != null ? !dateJour.equals(activite.dateJour) : activite.dateJour != null) return false;
+        if (codeSport != that.codeSport) return false;
+        if (numSej != that.numSej) return false;
+        if (dateJour != null ? !dateJour.equals(that.dateJour) : that.dateJour != null) return false;
 
         return true;
     }
@@ -74,7 +62,6 @@ public class Activite {
         int result = codeSport;
         result = 31 * result + (dateJour != null ? dateJour.hashCode() : 0);
         result = 31 * result + numSej;
-        result = 31 * result + nbloc;
         return result;
     }
 }

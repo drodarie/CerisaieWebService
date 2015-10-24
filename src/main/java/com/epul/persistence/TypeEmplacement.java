@@ -3,9 +3,7 @@ package com.epul.persistence;
 import javax.persistence.*;
 
 /**
- * Created by Dimitri on 02/10/2015.
- *
- * @version 1.0
+ * Created by Toromis on 24/10/2015.
  */
 @Entity
 @Table(name = "type_emplacement", schema = "", catalog = "cerisaie")

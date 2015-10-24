@@ -13,4 +13,10 @@ public interface IClientService {
     List<Client> getAllClients();
 
     Client getClient(int id);
+
+    String modifyClient(int id, String nom, String adresse, int cpClient, String Ville, String pieceCli, int nbPiece);
+
+    String deleteClient(int id);
+
+    String addClient(Client client);
 }

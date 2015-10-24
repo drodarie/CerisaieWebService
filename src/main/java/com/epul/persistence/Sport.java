@@ -6,16 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Dimitri on 02/10/2015.
- *
- * @version 1.0
+ * Created by Toromis on 24/10/2015.
  */
 @Entity
 public class Sport {
     private int codeSport;
     private String libelleSport;
     private String uniteTpsSport;
-    private float tarifUnite;
+    private int tarifUnite;
 
     @Id
     @Column(name = "CodeSport")
@@ -49,11 +47,11 @@ public class Sport {
 
     @Basic
     @Column(name = "TarifUnite")
-    public float getTarifUnite() {
+    public int getTarifUnite() {
         return tarifUnite;
     }
 
-    public void setTarifUnite(float tarifUnite) {
+    public void setTarifUnite(int tarifUnite) {
         this.tarifUnite = tarifUnite;
     }
 
@@ -65,7 +63,7 @@ public class Sport {
         Sport sport = (Sport) o;
 
         if (codeSport != sport.codeSport) return false;
-        if (Float.compare(sport.tarifUnite, tarifUnite) != 0) return false;
+        if (tarifUnite != sport.tarifUnite) return false;
         if (libelleSport != null ? !libelleSport.equals(sport.libelleSport) : sport.libelleSport != null) return false;
         if (uniteTpsSport != null ? !uniteTpsSport.equals(sport.uniteTpsSport) : sport.uniteTpsSport != null)
             return false;
@@ -78,7 +76,7 @@ public class Sport {
         int result = codeSport;
         result = 31 * result + (libelleSport != null ? libelleSport.hashCode() : 0);
         result = 31 * result + (uniteTpsSport != null ? uniteTpsSport.hashCode() : 0);
-        result = 31 * result + (tarifUnite != +0.0f ? Float.floatToIntBits(tarifUnite) : 0);
+        result = 31 * result + tarifUnite;
         return result;
     }
 }

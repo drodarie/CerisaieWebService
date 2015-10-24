@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Dimitri on 02/10/2015.
- *
- * @version 1.0
+ * Created by Toromis on 24/10/2015.
  */
 @Entity
 public class Emplacement {

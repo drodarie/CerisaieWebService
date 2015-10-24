@@ -6,27 +6,44 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Dimitri on 02/10/2015.
- *
- * @version 1.0
+ * Created by Toromis on 24/10/2015.
  */
 @Entity
 public class Client {
-    private Integer numCli;
+    private int numCli;
     private String nomCli;
     private String adrRueCli;
-    private String cpCli;
+    private int cpCli;
     private String villeCli;
     private String pieceCli;
-    private String numPieceCli;
+    private int numPieceCli;
+
+    public Client() {
+        numCli=0;
+        nomCli="";
+        adrRueCli="";
+        cpCli=0;
+        villeCli="";
+        pieceCli="";
+        numPieceCli=0;
+    }
+
+    public Client(String nomCli, String adrRueCli, int cpCli, String villeCli, String pieceCli, int numPieceCli) {
+        this.nomCli = nomCli;
+        this.adrRueCli = adrRueCli;
+        this.cpCli = cpCli;
+        this.villeCli = villeCli;
+        this.pieceCli = pieceCli;
+        this.numPieceCli = numPieceCli;
+    }
 
     @Id
     @Column(name = "NumCli")
-    public Integer getNumCli() {
+    public int getNumCli() {
         return numCli;
     }
 
-    public void setNumCli(Integer numCli) {
+    public void setNumCli(int numCli) {
         this.numCli = numCli;
     }
 
@@ -52,11 +69,11 @@ public class Client {
 
     @Basic
     @Column(name = "CpCli")
-    public String getCpCli() {
+    public int getCpCli() {
         return cpCli;
     }
 
-    public void setCpCli(String cpCli) {
+    public void setCpCli(int cpCli) {
         this.cpCli = cpCli;
     }
 
@@ -82,11 +99,11 @@ public class Client {
 
     @Basic
     @Column(name = "NumPieceCli")
-    public String getNumPieceCli() {
+    public int getNumPieceCli() {
         return numPieceCli;
     }
 
-    public void setNumPieceCli(String numPieceCli) {
+    public void setNumPieceCli(int numPieceCli) {
         this.numPieceCli = numPieceCli;
     }
 
@@ -98,12 +115,12 @@ public class Client {
         Client client = (Client) o;
 
         if (numCli != client.numCli) return false;
+        if (cpCli != client.cpCli) return false;
+        if (numPieceCli != client.numPieceCli) return false;
         if (nomCli != null ? !nomCli.equals(client.nomCli) : client.nomCli != null) return false;
         if (adrRueCli != null ? !adrRueCli.equals(client.adrRueCli) : client.adrRueCli != null) return false;
-        if (cpCli != null ? !cpCli.equals(client.cpCli) : client.cpCli != null) return false;
         if (villeCli != null ? !villeCli.equals(client.villeCli) : client.villeCli != null) return false;
         if (pieceCli != null ? !pieceCli.equals(client.pieceCli) : client.pieceCli != null) return false;
-        if (numPieceCli != null ? !numPieceCli.equals(client.numPieceCli) : client.numPieceCli != null) return false;
 
         return true;
     }
@@ -113,10 +130,10 @@ public class Client {
         int result = numCli;
         result = 31 * result + (nomCli != null ? nomCli.hashCode() : 0);
         result = 31 * result + (adrRueCli != null ? adrRueCli.hashCode() : 0);
-        result = 31 * result + (cpCli != null ? cpCli.hashCode() : 0);
+        result = 31 * result + cpCli;
         result = 31 * result + (villeCli != null ? villeCli.hashCode() : 0);
         result = 31 * result + (pieceCli != null ? pieceCli.hashCode() : 0);
-        result = 31 * result + (numPieceCli != null ? numPieceCli.hashCode() : 0);
+        result = 31 * result + numPieceCli;
         return result;
     }
 }
