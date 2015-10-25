@@ -1,9 +1,6 @@
 package com.epul.persistence;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -17,6 +14,7 @@ public class Sejour {
     private int nbPersonnes;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NumSej")
     public int getNumSej() {
         return numSej;

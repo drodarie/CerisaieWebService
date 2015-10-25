@@ -34,7 +34,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addClient (@ModelAttribute("client") Client client){
+    public String addClient (@RequestBody Client client){
         return clientService.addClient(client);
     }
 }

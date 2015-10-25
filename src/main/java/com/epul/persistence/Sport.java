@@ -1,9 +1,6 @@
 package com.epul.persistence;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Toromis on 24/10/2015.
@@ -16,6 +13,7 @@ public class Sport {
     private int tarifUnite;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "CodeSport")
     public int getCodeSport() {
         return codeSport;

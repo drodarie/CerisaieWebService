@@ -1,9 +1,6 @@
 package com.epul.persistence;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Toromis on 24/10/2015.
@@ -18,26 +15,8 @@ public class Client {
     private String pieceCli;
     private int numPieceCli;
 
-    public Client() {
-        numCli=0;
-        nomCli="";
-        adrRueCli="";
-        cpCli=0;
-        villeCli="";
-        pieceCli="";
-        numPieceCli=0;
-    }
-
-    public Client(String nomCli, String adrRueCli, int cpCli, String villeCli, String pieceCli, int numPieceCli) {
-        this.nomCli = nomCli;
-        this.adrRueCli = adrRueCli;
-        this.cpCli = cpCli;
-        this.villeCli = villeCli;
-        this.pieceCli = pieceCli;
-        this.numPieceCli = numPieceCli;
-    }
-
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NumCli")
     public int getNumCli() {
         return numCli;

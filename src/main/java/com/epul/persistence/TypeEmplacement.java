@@ -13,6 +13,7 @@ public class TypeEmplacement {
     private float tariftypepl;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "CodeTypeE")
     public int getCodeTypeE() {
         return codeTypeE;

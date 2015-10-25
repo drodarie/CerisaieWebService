@@ -1,9 +1,6 @@
 package com.epul.persistence;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Toromis on 24/10/2015.
@@ -15,6 +12,7 @@ public class Emplacement {
     private int nbPersMaxEmpl;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "NumEmpl")
     public int getNumEmpl() {
         return numEmpl;

@@ -38,7 +38,6 @@ class PersistenceContext {
         entityManagerFactoryBean.setPackagesToScan("com.epul.persistence");
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
         //Configures the used database dialect. This allows Hibernate to create SQL
         //that is optimized for the used database.
         jpaProperties.put("hibernate.dialect", HIBERNATE_DIALECT);
