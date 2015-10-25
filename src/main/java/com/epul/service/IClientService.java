@@ -14,7 +14,7 @@ public interface IClientService {
 
     Client getClient(int id);
 
-    String modifyClient(int id, String nom, String adresse, int cpClient, String Ville, String pieceCli, int nbPiece);
+    String modifyClient(Client client);
 
     String deleteClient(int id);
 

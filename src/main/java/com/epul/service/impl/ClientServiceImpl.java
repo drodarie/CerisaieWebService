@@ -31,15 +31,8 @@ public class ClientServiceImpl implements IClientService {
     }
 
     @Override
-    public String modifyClient(int id, String nom, String adresse, int cpClient, String ville, String pieceCli, int nbPiece) {
-        Client client = clientDAO.findOne(id);
-        if (client!=null){
-            client.setNomCli(nom);
-            client.setAdrRueCli(adresse);
-            client.setCpCli(cpClient);
-            client.setVilleCli(ville);
-            client.setPieceCli(pieceCli);
-            client.setNumPieceCli(nbPiece);
+    public String modifyClient(Client client) {
+        if (clientDAO.findOne(client.getNumCli())!=null){
             clientDAO.save(client);
             return "Client modifié.";
         }
@@ -58,10 +51,7 @@ public class ClientServiceImpl implements IClientService {
 
     @Override
     public String addClient(Client client) {
-        if (clientDAO.findOne(client.getNumCli())==null){
-            clientDAO.save(client);
-            return "Client ajouté.";
-        }
-        return "Le client existe déjà.";
+        clientDAO.save(client);
+        return "Client ajouté.";
     }
 }
