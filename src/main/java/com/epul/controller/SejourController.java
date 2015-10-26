@@ -31,7 +31,7 @@ public class SejourController {
         return sejourService.getSejour(id);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteSejour(@PathVariable(value = "id") int id) {
         return sejourService.deleteSejour(id);
