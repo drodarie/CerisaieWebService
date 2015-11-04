@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 @Entity
 public class Sejour {
     private int numSej;
+    private int numCli;
+    private int numEmpl;
     private Timestamp datedebSej;
     private Timestamp dateFinSej;
     private int nbPersonnes;
@@ -54,6 +56,26 @@ public class Sejour {
         this.nbPersonnes = nbPersonnes;
     }
 
+    @Basic
+    @Column(name = "NumEmpl")
+    public int getNumEmpl() {
+        return numEmpl;
+    }
+
+    public void setNumEmpl(int numEmpl) {
+        this.numEmpl = numEmpl;
+    }
+
+    @Basic
+    @Column(name = "NumCli")
+    public int getNumCli() {
+        return numCli;
+    }
+
+    public void setNumCli(int numCli) {
+        this.numCli = numCli;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,6 +84,8 @@ public class Sejour {
         Sejour sejour = (Sejour) o;
 
         if (numSej != sejour.numSej) return false;
+        if (numCli!=sejour.numCli)return false;
+        if (numEmpl!=sejour.numEmpl)return false;
         if (nbPersonnes != sejour.nbPersonnes) return false;
         if (datedebSej != null ? !datedebSej.equals(sejour.datedebSej) : sejour.datedebSej != null) return false;
         if (dateFinSej != null ? !dateFinSej.equals(sejour.dateFinSej) : sejour.dateFinSej != null) return false;
@@ -72,6 +96,8 @@ public class Sejour {
     @Override
     public int hashCode() {
         int result = numSej;
+        result = 31 * result + numCli;
+        result = 31 * result + numEmpl;
         result = 31 * result + (datedebSej != null ? datedebSej.hashCode() : 0);
         result = 31 * result + (dateFinSej != null ? dateFinSej.hashCode() : 0);
         result = 31 * result + nbPersonnes;
