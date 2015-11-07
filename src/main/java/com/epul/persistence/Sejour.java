@@ -83,14 +83,13 @@ public class Sejour {
 
         Sejour sejour = (Sejour) o;
 
-        if (numSej != sejour.numSej) return false;
-        if (numCli!=sejour.numCli)return false;
-        if (numEmpl!=sejour.numEmpl)return false;
-        if (nbPersonnes != sejour.nbPersonnes) return false;
-        if (datedebSej != null ? !datedebSej.equals(sejour.datedebSej) : sejour.datedebSej != null) return false;
-        if (dateFinSej != null ? !dateFinSej.equals(sejour.dateFinSej) : sejour.dateFinSej != null) return false;
+        return numSej == sejour.numSej &&
+                numCli == sejour.numCli &&
+                numEmpl == sejour.numEmpl &&
+                nbPersonnes == sejour.nbPersonnes &&
+                !(datedebSej != null ? !datedebSej.equals(sejour.datedebSej) : sejour.datedebSej != null) &&
+                !(dateFinSej != null ? !dateFinSej.equals(sejour.dateFinSej) : sejour.dateFinSej != null);
 
-        return true;
     }
 
     @Override

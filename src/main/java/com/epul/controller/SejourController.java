@@ -1,11 +1,14 @@
 package com.epul.controller;
 
 import com.epul.persistence.Sejour;
+import com.epul.service.IClientService;
 import com.epul.service.ISejourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,16 +22,24 @@ public class SejourController {
     @Autowired
     private ISejourService sejourService;
 
+    @Autowired
+    private IClientService clientService;
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<Sejour> getSejours() {
-        return sejourService.getAllSejours();
+    public List<Object> getSejours() {
+        List<Object> result = new ArrayList<>();
+        for (Sejour sejour : sejourService.getAllSejours()) {
+            result.add(Arrays.asList(sejour, clientService.getClient(sejour.getNumCli())));
+        }
+        return result;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public Sejour getSejour(@PathVariable(value = "id") int id) {
-        return sejourService.getSejour(id);
+    public List<Object> getSejour(@PathVariable(value = "id") int id) {
+        Sejour sejour = sejourService.getSejour(id);
+        return Arrays.asList(sejour, clientService.getClient(sejour.getNumCli()));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
