@@ -3,6 +3,7 @@ package com.epul.dao;
 import com.epul.persistence.Activite;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -10,4 +11,6 @@ import java.util.List;
  */
 public interface IActiviteDAO extends JpaRepository<Activite, Integer> {
     List<Activite> findByNumSej(int numSej);
+
+    List<Activite> findByCodeSportAndDateJour(int codeSport, Timestamp dateJour);
 }

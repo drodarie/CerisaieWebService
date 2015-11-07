@@ -6,6 +6,7 @@ import com.epul.service.IActiviteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -19,5 +20,10 @@ public class ActiviteServiceImpl implements IActiviteService {
     @Override
     public List<Activite> getActivitesBySejourId(int id) {
         return activiteDAO.findByNumSej(id);
+    }
+
+    @Override
+    public List<Activite> getActivitesByCodeSportAndDateJour(int id, Timestamp date) {
+        return activiteDAO.findByCodeSportAndDateJour(id, date);
     }
 }
