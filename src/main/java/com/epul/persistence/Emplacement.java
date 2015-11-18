@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Emplacement {
     private int numEmpl;
+    private int codeTypeE;
     private float surfaceEmpl;
     private int nbPersMaxEmpl;
 
@@ -20,6 +21,15 @@ public class Emplacement {
 
     public void setNumEmpl(int numEmpl) {
         this.numEmpl = numEmpl;
+    }
+
+    @Column(name = "CodeTypeE")
+    public int getCodeTypeE() {
+        return codeTypeE;
+    }
+
+    public void setCodeTypeE(int codeTypeE) {
+        this.codeTypeE = codeTypeE;
     }
 
     @Basic
@@ -49,16 +59,16 @@ public class Emplacement {
 
         Emplacement that = (Emplacement) o;
 
-        if (numEmpl != that.numEmpl) return false;
-        if (Float.compare(that.surfaceEmpl, surfaceEmpl) != 0) return false;
-        if (nbPersMaxEmpl != that.nbPersMaxEmpl) return false;
+        return numEmpl == that.numEmpl && codeTypeE == that.codeTypeE &&
+                Float.compare(that.surfaceEmpl, surfaceEmpl) == 0 &&
+                nbPersMaxEmpl == that.nbPersMaxEmpl;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = numEmpl;
+        result = 31 * result + codeTypeE;
         result = 31 * result + (surfaceEmpl != +0.0f ? Float.floatToIntBits(surfaceEmpl) : 0);
         result = 31 * result + nbPersMaxEmpl;
         return result;
