@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 
 public class SejourClient {
-    Client client;
+    private Client client;
     private int numSej;
     private int numEmpl;
     private Timestamp datedebSej;
