@@ -1,14 +1,13 @@
 package com.epul.controller;
 
 import com.epul.persistence.Sejour;
-import com.epul.service.IClientService;
+import com.epul.persistence.SejourClient;
+import com.epul.service.ISejourClientService;
 import com.epul.service.ISejourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,26 +19,21 @@ import java.util.List;
 @RequestMapping("/Sejours")
 public class SejourController {
     @Autowired
-    private ISejourService sejourService;
+    private ISejourClientService sejourClientService;
 
     @Autowired
-    private IClientService clientService;
+    private ISejourService sejourService;
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<Object> getSejours() {
-        List<Object> result = new ArrayList<>();
-        for (Sejour sejour : sejourService.getAllSejours()) {
-            result.add(Arrays.asList(sejour, clientService.getClient(sejour.getNumCli())));
-        }
-        return result;
+    public List<SejourClient> getSejours() {
+        return sejourClientService.getAllSejours();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public List<Object> getSejour(@PathVariable(value = "id") int id) {
-        Sejour sejour = sejourService.getSejour(id);
-        return Arrays.asList(sejour, clientService.getClient(sejour.getNumCli()));
+    public SejourClient getSejour(@PathVariable(value = "id") int id) {
+        return sejourClientService.getSejour(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
