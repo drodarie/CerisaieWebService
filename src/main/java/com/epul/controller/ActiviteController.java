@@ -46,8 +46,8 @@ public class ActiviteController {
     @RequestMapping(value = "/{numSej}/{numSport}/{date}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteActivite(@PathVariable(value="numSej") int numSej, @PathVariable(value="numSport") int numSport,@PathVariable(value="date") String date){
-        Timestamp t = Timestamp.valueOf(date);
-        return activiteService.deleteActivite(numSej,numSport,t);
+
+        return activiteService.deleteActivite(numSej,numSport,date);
     }
 
     @RequestMapping(method = RequestMethod.POST)

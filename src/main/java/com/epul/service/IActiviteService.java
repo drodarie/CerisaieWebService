@@ -14,7 +14,7 @@ public interface IActiviteService {
 
     List<Activite> getActivitesByCodeSportAndDateJour(int id, Timestamp date);
 
-    String deleteActivite(int numSej, int numSport, Timestamp date);
+    String deleteActivite(int numSej, int numSport, String date);
 
     String addActivite(Activite activite);
 }

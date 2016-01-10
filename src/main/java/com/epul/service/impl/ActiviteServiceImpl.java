@@ -30,12 +30,21 @@ public class ActiviteServiceImpl implements IActiviteService {
     }
 
     @Override
-    public String deleteActivite(int numSej, int numSport, Timestamp date) {
+    public String deleteActivite(int numSej, int numSport, String date) {
         try{
+
+
+            // (Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(calendar.YEAR) + "-" + calendar.get(Calendar.HOUR_OF_DAY)
+            String[] parseDate = date.split("-");
+            String resDate = parseDate[2] + "-" + parseDate[1] + "-" + parseDate[0] + " 0" +parseDate[3]+":00:00";
+
+
+            Timestamp t = Timestamp.valueOf(resDate);
+
 
             ActivitePK activitePK = new ActivitePK();
             activitePK.setCodeSport(numSport);
-            activitePK.setDateJour(date);
+            activitePK.setDateJour(t);
             activitePK.setNumSej(numSej);
             Activite activite = activiteDAO.findOne(activitePK);
                     //findByCodeSportNumSejAndDateJour(numSport,numSej,date);
