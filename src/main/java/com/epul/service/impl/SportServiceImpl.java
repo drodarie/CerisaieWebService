@@ -6,6 +6,8 @@ import com.epul.service.ISportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Dimitri on 07/11/2015.
  */
@@ -17,5 +19,10 @@ public class SportServiceImpl implements ISportService {
     @Override
     public Sport getSport(int id) {
         return sportDAO.findOne(id);
+    }
+
+    @Override
+    public List<Sport> getAllSport() {
+        return sportDAO.findAll();
     }
 }
