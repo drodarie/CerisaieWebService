@@ -8,17 +8,20 @@ import java.util.List;
  * Created by Laura on 10/01/2016.
  */
 public class Facture {
+    private float prix;
     private SejourClient sejourClient;
     private Emplacement emplacement;
     private TypeEmplacement typeEmplacement;
     private List<ActiviteSport> activiteSport;
-    private float prix;
+
 
     public Facture(SejourClient sejourClient, Emplacement emplacement, TypeEmplacement typeEmplacement, List<ActiviteSport> activiteSport) {
         this.sejourClient = sejourClient;
         this.emplacement = emplacement;
         this.typeEmplacement = typeEmplacement;
         this.activiteSport = activiteSport;
+        calculateCost();
+
     }
 
     public void calculateCost(){
@@ -26,8 +29,9 @@ public class Facture {
         for(int i = 0; i < activiteSport.size(); i++){
             totAct += activiteSport.get(i).getSport().getTarifUnite() * activiteSport.get(i).getNbloc();
         }
-
-       prix =  TimeUtils.getDayFromTime(sejourClient.getDateFinSej()) - TimeUtils.getDayFromTime(sejourClient.getDatedebSej()) * typeEmplacement.getTariftypepl() + totAct;
+        float duree =  TimeUtils.getDayFromTime(sejourClient.getDateFinSej()) - TimeUtils.getDayFromTime(sejourClient.getDatedebSej());
+        float prixSej = duree * typeEmplacement.getTariftypepl();
+        prix = prixSej + totAct;
     }
 
     public SejourClient getSejourClient() {
@@ -60,5 +64,13 @@ public class Facture {
 
     public void setActiviteSport(List<ActiviteSport> activiteSport) {
         this.activiteSport = activiteSport;
+    }
+
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
     }
 }
