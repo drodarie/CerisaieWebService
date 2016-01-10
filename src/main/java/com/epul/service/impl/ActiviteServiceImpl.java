@@ -2,8 +2,10 @@ package com.epul.service.impl;
 
 import com.epul.dao.IActiviteDAO;
 import com.epul.persistence.Activite;
+import com.epul.persistence.ActivitePK;
 import com.epul.service.IActiviteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -25,5 +27,28 @@ public class ActiviteServiceImpl implements IActiviteService {
     @Override
     public List<Activite> getActivitesByCodeSportAndDateJour(int id, Timestamp date) {
         return activiteDAO.findByCodeSportAndDateJour(id, date);
+    }
+
+    @Override
+    public String deleteActivite(int numSej, int numSport, Timestamp date) {
+        try{
+
+            ActivitePK activitePK = new ActivitePK();
+            activitePK.setCodeSport(numSport);
+            activitePK.setDateJour(date);
+            activitePK.setNumSej(numSej);
+            Activite activite = activiteDAO.findOne(activitePK);
+                    //findByCodeSportNumSejAndDateJour(numSport,numSej,date);
+            activiteDAO.delete(activite);
+            return "Activité supprimée";
+        }catch (EmptyResultDataAccessException e){
+            return "L'activité n'est pas connue.";
+        }
+    }
+
+    @Override
+    public String addActivite(Activite activite) {
+        activiteDAO.save(activite);
+        return "Activité ajoutée.";
     }
 }
