@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Facture {
     private float prix;
+    private float prixActivite;
+    private float prixSejour;
     private SejourClient sejourClient;
     private Emplacement emplacement;
     private TypeEmplacement typeEmplacement;
@@ -25,13 +27,13 @@ public class Facture {
     }
 
     public void calculateCost(){
-        int totAct = 0;
+         prixActivite = 0;
         for(int i = 0; i < activiteSport.size(); i++){
-            totAct += activiteSport.get(i).getSport().getTarifUnite() * activiteSport.get(i).getNbloc();
+            prixActivite += activiteSport.get(i).getSport().getTarifUnite() * activiteSport.get(i).getNbloc();
         }
         float duree =  TimeUtils.getDayFromTime(sejourClient.getDateFinSej()) - TimeUtils.getDayFromTime(sejourClient.getDatedebSej());
-        float prixSej = duree * typeEmplacement.getTariftypepl();
-        prix = prixSej + totAct;
+        prixSejour = duree * typeEmplacement.getTariftypepl();
+        prix = prixSejour + prixActivite;
     }
 
     public SejourClient getSejourClient() {
@@ -72,5 +74,21 @@ public class Facture {
 
     public void setPrix(float prix) {
         this.prix = prix;
+    }
+
+    public float getPrixActivite() {
+        return prixActivite;
+    }
+
+    public void setPrixActivite(float prixActivite) {
+        this.prixActivite = prixActivite;
+    }
+
+    public float getPrixSejour() {
+        return prixSejour;
+    }
+
+    public void setPrixSejour(float prixSejour) {
+        this.prixSejour = prixSejour;
     }
 }
