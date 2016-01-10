@@ -32,7 +32,7 @@ public class Facture {
             prixActivite += activiteSport.get(i).getSport().getTarifUnite() * activiteSport.get(i).getNbloc();
         }
         float duree =  TimeUtils.getDayFromTime(sejourClient.getDateFinSej()) - TimeUtils.getDayFromTime(sejourClient.getDatedebSej());
-        prixSejour = duree * typeEmplacement.getTariftypepl();
+        prixSejour = duree * typeEmplacement.getTariftypepl() * sejourClient.getNbPersonnes();
         prix = prixSejour + prixActivite;
     }
 
